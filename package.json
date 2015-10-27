@@ -34,7 +34,8 @@
     "browser-supports-log-styles": "1.1.3",
     "humble-localstorage": "^1.4.2",
     "lie": "^3.0.1",
-    "nets": "^3.2.0"
+    "nets": "^3.2.0",
+    "pouchdb-hoodie-store": "^1.1.0"
   },
   "devDependencies": {
     "browserify": "11.2.0",
