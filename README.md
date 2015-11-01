@@ -24,7 +24,7 @@ taskQueue('email').start({
 ## API
 
 ```js
-var taskQueue = new TaskQueue(userId)
+var taskQueue = new TaskQueue(userId, options)
 
 mailQueue = taskQueue('mail')
 taskQueue.on(eventName, handler)
