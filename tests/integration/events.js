@@ -3,15 +3,22 @@ var test = require('tape')
 
 var MockStore = require('../utils/mock-store')
 var TaskQueue = require('../../index')
+var memdown = require('memdown')
+
+var options = {
+  remoteBaseUrl: '/api/users',
+  remote: 'test'
+}
 
 test('Events: typedQueue.on', function (t) {
   t.plan(3)
 
-  simple.mock(TaskQueue.internals, 'CustomStore').callFn(function (id) {
-    return new MockStore(id)
+  simple.mock(TaskQueue.internals, 'Store').callFn(function (options) {
+    options.db = memdown
+    return MockStore(options)
   })
 
-  var taskQueue = new TaskQueue('id123')
+  var taskQueue = new TaskQueue('id123', options)
   var fooQueue = taskQueue('foo')
   var events = []
 
@@ -28,17 +35,18 @@ test('Events: typedQueue.on', function (t) {
     t.is(events.length, 1, 'emits one "start" event')
     t.is(events[0].attributes.property, 'value', 'emits correct task')
     simple.restore()
-  }, 500)
+  }, 100)
 })
 
 test('Events: typedQueue.one', function (t) {
   t.plan(3)
 
-  simple.mock(TaskQueue.internals, 'CustomStore').callFn(function (id) {
-    return new MockStore(id)
+  simple.mock(TaskQueue.internals, 'Store').callFn(function (options) {
+    options.db = memdown
+    return MockStore(options)
   })
 
-  var taskQueue = new TaskQueue('id123')
+  var taskQueue = new TaskQueue('id123', options)
   var fooQueue = taskQueue('foo')
   var events = []
 
@@ -59,5 +67,5 @@ test('Events: typedQueue.one', function (t) {
     t.is(events.length, 1, 'emits one "start" event')
     t.is(events[0].attributes.property, 'value', 'emits correct task')
     simple.restore()
-  }, 500)
+  }, 100)
 })
