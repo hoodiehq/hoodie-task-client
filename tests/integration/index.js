@@ -1,2 +1,2 @@
-require('./walktrough')
+require('./walkthrough')
 require('./events')

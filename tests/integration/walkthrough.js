@@ -9,7 +9,7 @@ var options = {
   remote: 'test'
 }
 
-test('Walktrough', function (t) {
+test('walkthrough', function (t) {
   simple.mock(TaskQueue.internals, 'Store').callFn(function (options) {
     options.db = require('memdown')
     return MockStore(options)
