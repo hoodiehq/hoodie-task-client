@@ -35,7 +35,7 @@
     "humble-localstorage": "^1.4.2",
     "lie": "^3.0.1",
     "nets": "^3.2.0",
-    "hoodie-client-store": "^3.0.0"
+    "hoodie-client-store": "^4.1.0"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
