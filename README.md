@@ -76,6 +76,7 @@ node tests/integration/walkthrough # run walkthrough integration test
 # PROTIP™ Pipe output through a [pretty reporter](https://www.npmjs.com/package/tape#pretty-reporters)
 ```
 
+
 ## License
 
-[Apache-2.0](https://github.com/hoodiehq/hoodie/blob/master/LICENSE)
+[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
