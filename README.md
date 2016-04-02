@@ -1,4 +1,4 @@
-# hoodie-client-task
+﻿# hoodie-client-task
 
 > client api for asynchronous task queue, using PouchDB for sync
 
@@ -50,7 +50,7 @@ mailQueue.on('error', handleNewTaskError)
 Local setup
 
 ```
-git clone git@github.com:hoodiehq/hoodie-client-task.git
+git clone https://github.com/hoodiehq/hoodie-client-task.git
 cd hoodie-client-task
 npm install
 ```
