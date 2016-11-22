@@ -1,11 +1,11 @@
-﻿# hoodie-client-task
+# hoodie-task-client
 
 > client api for asynchronous task queue, using PouchDB for sync
 
-[![Build Status](https://travis-ci.org/hoodiehq/hoodie-client-task.svg?branch=master)](https://travis-ci.org/hoodiehq/hoodie-client-task)
-[![Coverage Status](https://coveralls.io/repos/hoodiehq/hoodie-client-task/badge.svg?branch=master)](https://coveralls.io/r/hoodiehq/hoodie-client-task?branch=master)
-[![Dependency Status](https://david-dm.org/hoodiehq/hoodie-client-task.svg)](https://david-dm.org/hoodiehq/hoodie-client-task)
-[![devDependency Status](https://david-dm.org/hoodiehq/hoodie-client-task/dev-status.svg)](https://david-dm.org/hoodiehq/hoodie-client-task#info=devDependencies)
+[![Build Status](https://travis-ci.org/hoodiehq/hoodie-task-client.svg?branch=master)](https://travis-ci.org/hoodiehq/hoodie-task-client)
+[![Coverage Status](https://coveralls.io/repos/hoodiehq/hoodie-task-client/badge.svg?branch=master)](https://coveralls.io/r/hoodiehq/hoodie-task-client?branch=master)
+[![Dependency Status](https://david-dm.org/hoodiehq/hoodie-task-client.svg)](https://david-dm.org/hoodiehq/hoodie-task-client)
+[![devDependency Status](https://david-dm.org/hoodiehq/hoodie-task-client/dev-status.svg)](https://david-dm.org/hoodiehq/hoodie-task-client#info=devDependencies)
 
 ## Example
 
@@ -50,8 +50,8 @@ mailQueue.on('error', handleNewTaskError)
 Local setup
 
 ```
-git clone https://github.com/hoodiehq/hoodie-client-task.git
-cd hoodie-client-task
+git clone https://github.com/hoodiehq/hoodie-task-client.git
+cd hoodie-task-client
 npm install
 ```
 
