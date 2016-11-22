@@ -1,3 +1,3 @@
-var Store = require('hoodie-client-store')
+var Store = require('@hoodie/store-client')
 
 module.exports = Store.defaults
