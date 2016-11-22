@@ -2,6 +2,9 @@
   "name": "@hoodie/task-client",
   "description": "client api for asynchronous task queue, using PouchDB for sync",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf dist && mkdirp dist",
     "build": "browserify index.js --standalone=TaskQueue > dist/hoodie-task-client.js",
