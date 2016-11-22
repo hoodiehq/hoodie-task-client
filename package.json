@@ -1,11 +1,11 @@
 {
-  "name": "hoodie-client-task",
+  "name": "hoodie-task-client",
   "description": "client api for asynchronous task queue, using PouchDB for sync",
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist && mkdirp dist",
-    "build": "browserify index.js --standalone=TaskQueue > dist/hoodie-client-task.js",
-    "postbuild": "uglifyjs dist/hoodie-client-task.js -mc > dist/hoodie-client-task.min.js",
+    "build": "browserify index.js --standalone=TaskQueue > dist/hoodie-task-client.js",
+    "postbuild": "uglifyjs dist/hoodie-task-client.js -mc > dist/hoodie-task-client.min.js",
     "pretest": "standard",
     "test": "npm run -s test:node | tap-spec",
     "test:node": "node tests",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hoodiehq/hoodie-client-task.git"
+    "url": "https://github.com/hoodiehq/hoodie-task-client.git"
   },
   "keywords": [
     "hoodie",
@@ -27,9 +27,9 @@
   "author": "The Hoodie Community and other contributors | http://hood.ie/",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/hoodiehq/hoodie-client-task/issues"
+    "url": "https://github.com/hoodiehq/hoodie-task-client/issues"
   },
-  "homepage": "https://github.com/hoodiehq/hoodie-client-task#readme",
+  "homepage": "https://github.com/hoodiehq/hoodie-task-client#readme",
   "dependencies": {
     "browser-supports-log-styles": "^1.1.3",
     "hoodie-client-store": "^4.1.0",
