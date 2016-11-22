@@ -1,6 +1,6 @@
 module.exports = TaskQueue
 
-var Store = require('hoodie-client-store')
+var Store = require('@hoodie/store-client')
 var getApi = require('./lib/get-api')
 
 var internals = TaskQueue.internals = {
