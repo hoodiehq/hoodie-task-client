@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/hoodiehq/hoodie-task-client#readme",
   "dependencies": {
-    "@hoodie/store-client": "^5.0.12"
+    "@hoodie/store-client": "^7.0.0"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
