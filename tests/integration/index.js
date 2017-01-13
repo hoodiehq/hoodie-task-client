@@ -1,2 +1,0 @@
-require('./walkthrough')
-require('./events')

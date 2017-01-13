@@ -2,55 +2,54 @@
   "name": "@hoodie/task-client",
   "description": "client api for asynchronous task queue, using PouchDB for sync",
   "main": "index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "prebuild": "rimraf dist && mkdirp dist",
-    "build": "browserify index.js --standalone=TaskQueue > dist/hoodie-task-client.js",
-    "postbuild": "uglifyjs dist/hoodie-task-client.js -mc > dist/hoodie-task-client.min.js",
+    "build": "browserify -s Task index.js > dist/hoodie-task-client.js",
     "pretest": "standard",
-    "test": "npm run -s test:node | tap-spec",
-    "test:node": "node tests",
-    "test:watch": "gaze 'clear && node tests | tap-min' 'tests/**/*.js' 'index.js' 'lib/**/*.js'",
+    "test": "standard",
     "test:coverage": "istanbul cover tests",
     "test:coverage:upload": "istanbul-coveralls",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test:browser:local": "zuul --local 8080 -- tests",
+    "test:browser:cloud": "zuul -- tests",
+    "test:node": "node tests",
+    "presemantic-release": "npm run -s build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "postpublish": "greenkeeper-postpublish"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hoodiehq/hoodie-task-client.git"
+    "url": "git+https://github.com/hoodiehq/hoodie-task-client.git"
   },
   "keywords": [
     "hoodie",
     "task",
-    "couchdb",
-    "pouchdb"
+    "pouchdb",
+    "couchdb"
   ],
-  "author": "The Hoodie Community and other contributors | http://hood.ie/",
+  "author": {
+    "name": "The Hoodie Community and other contributors | http://hood.ie/"
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/hoodiehq/hoodie-task-client/issues"
   },
   "homepage": "https://github.com/hoodiehq/hoodie-task-client#readme",
-  "dependencies": {
-    "@hoodie/store-client": "^5.0.12"
-  },
   "devDependencies": {
     "browserify": "^13.0.0",
-    "gaze-cli": "^0.2.0",
+    "greenkeeper-postpublish": "^1.0.0",
     "istanbul": "^0.4.2",
     "istanbul-coveralls": "^1.0.3",
-    "memdown": "^1.1.2",
+    "memdown": "^1.1.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.5.0",
-    "semantic-release": "^6.3.2",
+    "rimraf": "^2.4.4",
+    "semantic-release": "^6.1.0",
     "simple-mock": "^0.7.0",
     "standard": "^8.0.0",
-    "tap-min": "^1.0.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.4.0",
-    "uglify-js": "^2.6.1"
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "@hoodie/store-client": "^5.0.12"
   },
   "version": "0.0.0-development"
 }
