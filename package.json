@@ -9,8 +9,6 @@
     "test": "standard",
     "test:coverage": "istanbul cover tests",
     "test:coverage:upload": "istanbul-coveralls",
-    "test:browser:local": "zuul --local 8080 -- tests",
-    "test:browser:cloud": "zuul -- tests",
     "test:node": "node tests",
     "presemantic-release": "npm run -s build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
