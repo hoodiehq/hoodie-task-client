@@ -1,20 +1,17 @@
 sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
 notifications:
   email: false
 node_js:
-  - 4
+  - '4'
 before_script:
   - npm prune
-script: npm run $COMMAND
 after_success:
   - npm run semantic-release
-  - npm run test:coverage
-  - npm run test:coverage:upload
-env:
-  matrix:
-  - COMMAND=test
-  - COMMAND=test:browser:cloud
+  - npm run test:coverage && npm run test:coverage:upload
 branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
