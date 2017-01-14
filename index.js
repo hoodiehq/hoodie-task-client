@@ -1,41 +1,44 @@
-module.exports = TaskQueue
+module.exports = Task
 
-var Store = require('@hoodie/store-client')
-var getApi = require('./lib/get-api')
+var EventEmitter = require('events').EventEmitter
+var StoreClient = require('@hoodie/store-client')
+var start = require('./lib/start.js')
+var off = require('./lib/off.js')
+var on = require('./lib/on.js')
+var one = require('./lib/one.js')
 
-var internals = TaskQueue.internals = {
-  Store: Store.defaults
-}
-
-function TaskQueue (id, options) {
-  if (!(this instanceof TaskQueue)) return new TaskQueue(id, options)
+function Task (id, options) {
+  if (!(this instanceof Task)) return new Task(id, options)
   if (typeof id !== 'string') throw new Error('Must be a valid string.')
 
-  if (!options || (!options.remote && !options.remoteBaseUrl)) {
-    throw new Error('options.remote or options.remoteBaseUrl is required')
+  if (!options || !options.remoteBaseUrl) {
+    throw new Error('options.remoteBaseUrl is required')
   }
 
-  if (options.remoteBaseUrl) {
-    options.remoteBaseUrl = options.remoteBaseUrl.replace(/\/$/, '')
-    if (!options.remote) {
-      options.remote = id
-    }
-    if (!/^https?:\/\//.test(options.remote)) {
-      options.remote = (options.remoteBaseUrl + '/' + options.remote)
-    }
-  }
+  options.remoteBaseUrl = options.remoteBaseUrl.replace(/\/$/, '')
+  options.remote = (options.remoteBaseUrl + '/queue/' + encodeURIComponent(id))
 
-  var CustomStore = internals.Store(options)
-  var store = new CustomStore(id)
-  var state = {
-    id: id,
-    store: store
-  }
+  delete options.remoteBaseUrl
 
-  store.connect()
-  store.on('error', function (error) {
+  var taskStore = new StoreClient(id, options)
+
+  taskStore.on('error', function (error) {
     console.error(error)
   })
 
-  return getApi.bind(null, state)
+  taskStore.connect()
+
+  var state = {
+    taskStore: taskStore,
+    emitter: new EventEmitter()
+  }
+
+  return function (type) {
+    return {
+      start: start.bind(null, state, type),
+      off: off.bind(null, state),
+      on: on.bind(null, state),
+      one: one.bind(null, state)
+    }
+  }
 }
