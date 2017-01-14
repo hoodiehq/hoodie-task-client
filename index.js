@@ -4,6 +4,8 @@ var EventEmitter = require('events').EventEmitter
 var StoreClient = require('@hoodie/store-client')
 var start = require('./lib/start.js')
 var off = require('./lib/off.js')
+var on = require('./lib/on.js')
+var one = require('./lib/one.js')
 
 function Task (id, options) {
   if (!(this instanceof Task)) return new Task(id, options)
@@ -35,8 +37,8 @@ function Task (id, options) {
     return {
       start: start.bind(null, state, type),
       off: off.bind(null, state),
-      on: state.emitter.on,
-      one: state.emitter.once
+      on: on.bind(null, state),
+      one: one.bind(null, state)
     }
   }
 }
