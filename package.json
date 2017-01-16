@@ -1,5 +1,6 @@
 {
   "name": "@hoodie/task-client",
+  "version": "0.0.0-semantically-released",
   "description": "client api for asynchronous task queue, using PouchDB for sync",
   "main": "index.js",
   "scripts": {
