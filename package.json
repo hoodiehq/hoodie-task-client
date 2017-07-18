@@ -47,7 +47,7 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "@hoodie/store-client": "^5.0.12"
+    "@hoodie/store-client": "^8.1.3"
   },
   "version": "0.0.0-development"
 }
